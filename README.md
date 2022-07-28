@@ -1,13 +1,4 @@
-# kadavy-interactive-process-graphs
-
-Bachelor thesis supervised by Radek Ošlejšek. Interactive process maps for KYPO Analyst.
-
-## Elasticsearch
-Prior to the start of the application, it is required to run Elasticsearch (https://gitlab.fi.muni.cz/cybersec/elk-la/elk-portal-commands-events).
-* Follow the instructions there:  
-  * Insert data to elasticsearch - `./insert-events.sh ".\2021-06-30 Qualitative interview study"` (the data are in this "2021-06-30 Qualitative interview study" folder)
-    * The isertion of data is done only once. If you have already done that in the past, go to the next step and run the database (`docker-compose up`)
-  * Run the Elasticsearch database - `docker-compose up`
+# Bachelor thesis
 
 ## My application
 * To run the frontend and backend in docker - `docker-compose up`
