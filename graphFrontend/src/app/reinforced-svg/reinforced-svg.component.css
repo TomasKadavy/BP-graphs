@@ -1,0 +1,26 @@
+.svgWrap {
+    background-color: #d4cc9d;
+    cursor: move;
+}
+
+.listOption {
+    width: 75%;
+}
+
+.listOptionContainer {
+    display: flex;
+}
+
+.detailButton {
+    height: 75%;
+}
+
+.zoomButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.zoomButton {
+    width: 100%;
+} 

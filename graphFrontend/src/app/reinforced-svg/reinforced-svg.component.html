@@ -1,0 +1,56 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav class="sidenav-side" mode="side" opened>
+      <div class="zoomButtons">
+        <button mat-button class="zoomButton" (click)="zoomIn()">+ zoom</button>
+        <button mat-button class="zoomButton" (click)="zoomOut()">- zoom</button>
+      </div>
+
+      <mat-action-list>
+        <mat-list-item (click) = "resetGraph()">
+          Reset whole graph
+        </mat-list-item>
+        <mat-list-item (click) = "resetZoom()">
+          Reset zoom on the graph
+        </mat-list-item>
+      </mat-action-list>
+      
+      <mat-toolbar>
+        Add more node types:
+      </mat-toolbar>  
+      <mat-selection-list #selectedNodes (selectionChange)="typesChanged(selectedNodes.selectedOptions.selected)">
+        <mat-list-option [value]="'bash'">
+          + bash commands
+        </mat-list-option>
+        <mat-list-option [value]="'msf'">
+          + msf commands
+        </mat-list-option>
+      </mat-selection-list>
+
+      <mat-toolbar>
+        Highlight a player walkthrough: 
+      </mat-toolbar>
+      <mat-selection-list #selectedPlayers (selectionChange)="onGroupsChange(selectedPlayers.selectedOptions.selected)">
+        <div class="listOptionContainer" *ngFor="let player of players">
+          <mat-list-option class="listOption" [value]="player">
+            {{player}}
+          </mat-list-option>
+          <button mat-button class="detailButton" (click)="openDialog(player)">Show detail</button>
+        </div>
+      </mat-selection-list>
+      
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <svg
+      [attr.width]="wrapAttributes['width']"
+      [attr.height]="wrapAttributes['height']"
+      [attr.class]="'svgWrap'"
+      [attr.xmlns]="'http://www.w3.org/2000/svg'"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      [attr.id]="'svgWrap'"
+      [attr.viewBox] = "attributes['viewBox']" 
+      (mousedown)="startDrag($event)" (mousemove)="drag($event)" (mouseup)="endDrag($event)" (mouseleave)="endDrag($event)" (mousewheel)="mouseWheel($event)" >
+        <svg:g app-graph [wholeGraph]="svg.children[0]" [selectedPlayersList]="selectedPlayersList" [attr.transform]="svg.children[0].attributes['transform']" [attr.class]="svg.children[0].attributes['class']" [attr.id]="'svg'">    
+        </svg:g>
+      </svg>
+    </mat-sidenav-content>
+</mat-sidenav-container>

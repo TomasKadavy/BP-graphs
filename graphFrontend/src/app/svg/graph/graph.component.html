@@ -1,0 +1,12 @@
+<ng-template [ngIf]="wholeGraph.children.length">
+    <svg:g *ngFor="let child of wholeGraph.children; index as i">
+        <ng-template [ngIf]="child.attributes['class'] == 'node'">
+            <svg:g app-node [element]="child" [selectedPlayersList]="selectedPlayersList" [wholeGraph]="wholeGraph" [attr.transform]="child.attributes['transform']" [attr.class]="child.attributes['class']">
+            </svg:g>
+        </ng-template>
+        <ng-template [ngIf]="child.attributes['class'] == 'edge'">
+            <svg:g app-edge [element]="child" [attr.transform]="child.attributes['transform']" [attr.class]="child.attributes['class']">
+            </svg:g>
+        </ng-template>
+    </svg:g>
+</ng-template>

@@ -1,0 +1,41 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav class="sidenav-side" mode="side" opened>
+      <div class="zoomButtons">
+        <button mat-button class="zoomButton" (click)="zoomIn()">+ zoom</button>
+        <button mat-button class="zoomButton" (click)="zoomOut()">- zoom</button>
+      </div>
+      <mat-action-list>
+        <mat-list-item (click) = "resetGraph()">
+          Reset whole graph
+        </mat-list-item>
+        <mat-list-item (click) = "resetZoom()">
+          Reset zoom on the graph
+        </mat-list-item>
+        <mat-list-item (click) = "resetWalkthroughSelection()">
+            Reset player walkthrough selection
+        </mat-list-item>
+      </mat-action-list>  
+      <mat-toolbar>
+        Highlight a player walkthrough: 
+      </mat-toolbar>
+      <mat-action-list *ngFor="let player of players">
+        <mat-list-item (click) = "highlightWrapper(player)">
+          {{player}}
+        </mat-list-item>
+      </mat-action-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <svg
+      [attr.width]="wrapAttributes['width']"
+      [attr.height]="wrapAttributes['height']"
+      [attr.class]="'svgWrap'"
+      [attr.xmlns]="'http://www.w3.org/2000/svg'"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      [attr.id]="'svgWrap'"
+      [attr.viewBox] = "attributes['viewBox']" 
+      (mousedown)="startDrag($event)" (mousemove)="drag($event)" (mouseup)="endDrag($event)" (mouseleave)="endDrag($event)" (mousewheel)="mouseWheel($event)">
+        <svg:g app-graph [wholeGraph]="svg.children[0]" [selectedPlayersList]="[lastSelectedPlayer.toString()]" [attr.transform]="svg.children[0].attributes['transform']" [attr.class]="svg.children[0].attributes['class']" [attr.id]="'svg'">    
+        </svg:g>
+      </svg>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,23 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav class="sidenav-side" mode="side" opened>
+      <mat-toolbar>
+          Menu
+      </mat-toolbar>
+          <mat-nav-list>
+            <a mat-list-item routerLink="/reinforcedGraph">Reinforced Graph</a>
+            <a mat-list-item routerLink="/playerGraph">Individual Player</a>
+          </mat-nav-list>
+          <mat-toolbar>
+            Select a specific level: 
+          </mat-toolbar>
+          <mat-nav-list *ngFor="let level of levels">
+            <a mat-list-item routerLink="/levelGraph/{{level}}">Detail of level: {{level}}</a>
+          </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <h1>Interactive process graphs</h1>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

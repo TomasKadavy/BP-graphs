@@ -1,0 +1,12 @@
+<svg
+    [attr.width]="wrapAttributes['width']"
+    [attr.height]="wrapAttributes['height']"
+    [attr.class]="'svgWrap'"
+    [attr.xmlns]="'http://www.w3.org/2000/svg'"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    [attr.id]="'svgWrap'"
+    [attr.viewBox] = "attributes['viewBox']" 
+    (mousedown)="startDrag($event)" (mousemove)="drag($event)" (mouseup)="endDrag($event)" (mouseleave)="endDrag($event)" (mousewheel)="mouseWheel($event)">
+    <svg:g app-graph [wholeGraph]="svg.children[0]" [selectedPlayersList]="[]" [attr.transform]="svg.children[0].attributes['transform']" [attr.class]="svg.children[0].attributes['class']" [attr.id]="'svg'">    
+    </svg:g>
+</svg>

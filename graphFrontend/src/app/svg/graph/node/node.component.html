@@ -1,0 +1,26 @@
+<ng-template #singleNode [ngIf]="element.children.length">
+    <svg:g *ngFor="let child of element.children; index as i" (mousedown)="startDrag($event)" (mousemove)="drag($event)" (mouseup)="endDrag($event)" (mouseleave)="endDrag($event)" >
+        <ng-template [ngIf]="child.name == 'polygon'">
+            <svg:g>
+                <svg:polygon #polygon [attr.fill]="child.attributes['fill']" [attr.points]="child.attributes['points']" [attr.stroke]="child.attributes['stroke']" [attr.class]="child.attributes['class']">
+                    <title>{{hoverInfo()}}</title>    
+                </svg:polygon>
+            </svg:g>
+        </ng-template>
+
+        <ng-template [ngIf]="child.name == 'text'">
+            <svg:g>
+                <svg:text #text [attr.class]="'text'" [attr.x]="child.attributes['x']" [attr.y]="child.attributes['y']" [attr.text-anchor]="child.attributes['text-anchor']"  [attr.font-size]="child.attributes['font-size']">   
+                    {{child.children[0].value}}
+                    <title>{{hoverInfo()}}</title>    
+                </svg:text>
+            </svg:g>
+        </ng-template>
+
+        <ng-template [ngIf]="child.name == 'ellipse'">
+            <svg:g>
+                <svg:ellipse [attr.class]="'ellipse'" [attr.fill]="child.attributes['fill']" [attr.stroke]="child.attributes['stroke']" [attr.cx]="child.attributes['cx']" [attr.cy]="child.attributes['cy']" [attr.rx]="child.attributes['rx']" [attr.ry]="child.attributes['ry']" />
+            </svg:g>
+        </ng-template>
+    </svg:g>
+</ng-template>

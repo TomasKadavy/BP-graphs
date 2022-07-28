@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  backend:
+    build: ./graphBackend
+    container_name: backend
+    ports:
+      - 8080:8080
+    networks:
+      - common_net
+  frontend:
+    build: ./graphFrontend
+    container_name: frontend
+    links:
+      - backend
+    depends_on:
+      - backend
+    ports:
+      - 4200:80
+    networks:
+      - common_net
+networks:
+  common_net:

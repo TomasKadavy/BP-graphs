@@ -1,0 +1,8 @@
+.svgWrap {
+    background-color: #9dd4b2;
+    cursor: move;
+}
+
+::ng-deep.mat-dialog-container {
+    padding: 0px;
+}

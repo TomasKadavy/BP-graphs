@@ -1,0 +1,14 @@
+.svgWrap {
+    background-color: #9dd4b2;
+    cursor: move;
+}
+
+.zoomButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.zoomButton {
+    width: 100%;
+} 
